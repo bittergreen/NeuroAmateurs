@@ -782,6 +782,37 @@ body {
     opacity: 0.8;
 }
 
+.contact-info {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.contact-info i {
+    margin-right: 8px;
+    color: #667eea;
+}
+
+.footer-qr {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.footer-qr img {
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.footer-qr img:hover {
+    transform: scale(1.05);
+}
+
+.contact-info {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hamburger {
@@ -900,5 +931,331 @@ input:focus {
     
     .topic-card {
         border: 2px solid #333;
+    }
+}
+
+/* QR Codes Section */
+.qr-codes-section {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.qr-code-item {
+    text-align: center;
+    background: #333;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    min-width: 250px;
+}
+
+.qr-code-item:hover {
+    transform: translateY(-5px);
+}
+
+.qr-placeholder {
+    width: 200px;
+    height: 200px;
+    background: #444;
+    border: 2px dashed #667eea;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.qr-placeholder:hover {
+    border-color: #4ade80;
+    background: #4a4a4a;
+}
+
+.qr-placeholder i {
+    font-size: 3rem;
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.qr-placeholder p {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0;
+    padding: 0 1rem;
+}
+
+.qr-code-item h3 {
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.qr-code-item p {
+    color: #b0b0b0;
+    margin: 0;
+}
+
+.donation-text {
+    color: #ff6b6b !important;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Comments Section */
+.comments-section {
+    background: #333;
+    padding: 3rem;
+    border-radius: 20px;
+    margin-top: 4rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.comments-section h3 {
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.comment-form {
+    margin-bottom: 3rem;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #555;
+    border-radius: 10px;
+    background: #444;
+    color: #e0e0e0;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.comment-form textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.form-row input {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid #555;
+    border-radius: 50px;
+    background: #444;
+    color: #e0e0e0;
+    font-size: 1rem;
+    min-width: 200px;
+    transition: border-color 0.3s ease;
+}
+
+.form-row input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.comments-list {
+    border-top: 1px solid #555;
+    padding-top: 2rem;
+}
+
+.comments-list h4 {
+    color: #e0e0e0;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.no-comments {
+    color: #888;
+    text-align: center;
+    font-style: italic;
+    padding: 2rem;
+}
+
+.comment-item {
+    background: #444;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #667eea;
+    transition: transform 0.2s ease;
+}
+
+.comment-item:hover {
+    transform: translateX(5px);
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.comment-author {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.comment-time {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.comment-content {
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Video Grid Styles */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.video-card {
+    background: #333;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 1px solid #444;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.05);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(102, 126, 234, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.video-card:hover .play-button {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-content {
+    padding: 1.5rem;
+}
+
+.video-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: #e0e0e0;
+    line-height: 1.4;
+}
+
+.video-content p {
+    color: #b0b0b0;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+.video-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.video-link:hover {
+    gap: 0.8rem;
+    color: #7c8ef7;
+}
+
+.video-link i {
+    font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .qr-codes-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .form-row input {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .comments-section {
+        padding: 2rem;
+    }
+    
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .video-thumbnail {
+        height: 180px;
+    }
+    
+    .video-content {
+        padding: 1.2rem;
     }
 }
