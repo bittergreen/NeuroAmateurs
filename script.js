@@ -31,10 +31,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        navbar.style.background = 'rgba(26, 26, 26, 0.98)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.background = 'rgba(26, 26, 26, 0.95)';
         navbar.style.boxShadow = 'none';
     }
 });
@@ -124,14 +124,78 @@ if (aboutSection) {
     statsObserver.observe(aboutSection);
 }
 
-// Enhanced neuron animation
+// Enhanced neuron animation with neural connections
 const neurons = document.querySelectorAll('.neuron');
+const neuralEdges = document.querySelectorAll('.neural-edge');
+
+// Define neural connections (moderately dense network)
+const connections = {
+    0: [1, 3, 10], // neuron 0 connects to 1, 3, 10
+    1: [0, 2, 11], // neuron 1 connects to 0, 2, 11
+    2: [1, 4, 9, 11], // neuron 2 connects to 1, 4, 9, 11
+    3: [0, 4, 5, 8, 10], // neuron 3 connects to 0, 4, 5, 8, 10
+    4: [2, 3, 5, 11], // neuron 4 connects to 2, 3, 5, 11
+    5: [3, 4, 6, 7], // neuron 5 connects to 3, 4, 6, 7
+    6: [5, 7, 8], // neuron 6 connects to 5, 7, 8
+    7: [5, 6, 9], // neuron 7 connects to 5, 6, 9
+    8: [3, 6], // neuron 8 connects to 3, 6
+    9: [2, 7], // neuron 9 connects to 2, 7
+    10: [0, 3, 11], // neuron 10 connects to 0, 3, 11
+    11: [1, 2, 4, 10] // neuron 11 connects to 1, 2, 4, 10
+};
+
+// Function to find edge between two neurons
+function findEdgeBetweenNeurons(neuronId1, neuronId2) {
+    const neuron1 = document.querySelector(`[data-id="${neuronId1}"]`);
+    const neuron2 = document.querySelector(`[data-id="${neuronId2}"]`);
+    
+    if (!neuron1 || !neuron2) return null;
+    
+    const x1 = neuron1.getAttribute('cx');
+    const y1 = neuron1.getAttribute('cy');
+    const x2 = neuron2.getAttribute('cx');
+    const y2 = neuron2.getAttribute('cy');
+    
+    return Array.from(neuralEdges).find(edge => {
+        const edgeX1 = edge.getAttribute('x1');
+        const edgeY1 = edge.getAttribute('y1');
+        const edgeX2 = edge.getAttribute('x2');
+        const edgeY2 = edge.getAttribute('y2');
+        
+        return (edgeX1 == x1 && edgeY1 == y1 && edgeX2 == x2 && edgeY2 == y2) ||
+               (edgeX1 == x2 && edgeY1 == y2 && edgeX2 == x1 && edgeY2 == y1);
+    });
+}
+
+// Function to activate neural connections
+function activateNeuralConnections(activeNeuronId) {
+    const connectedNeurons = connections[activeNeuronId] || [];
+    
+    connectedNeurons.forEach(connectedId => {
+        const edge = findEdgeBetweenNeurons(activeNeuronId, connectedId);
+        if (edge) {
+            edge.classList.add('active');
+            setTimeout(() => {
+                edge.classList.remove('active');
+            }, 600);
+        }
+    });
+}
+
 if (neurons.length > 0) {
     setInterval(() => {
-        const randomNeuron = neurons[Math.floor(Math.random() * neurons.length)];
-        randomNeuron.style.fill = '#f5576c';
+        const randomIndex = Math.floor(Math.random() * neurons.length);
+        const randomNeuron = neurons[randomIndex];
+        const neuronId = parseInt(randomNeuron.getAttribute('data-id'));
+        
+        // Activate neuron
+        randomNeuron.style.fill = '#fbbf24';
+        
+        // Activate connected edges
+        activateNeuralConnections(neuronId);
+        
         setTimeout(() => {
-            randomNeuron.style.fill = '#f093fb';
+            randomNeuron.style.fill = '#4ade80';
         }, 300);
     }, 1000);
 }
