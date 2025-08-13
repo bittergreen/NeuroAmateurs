@@ -1071,11 +1071,17 @@ input:focus {
     justify-content: center;
     margin: 0 auto 1.5rem;
     transition: all 0.3s ease;
+    /* 添加aspect-ratio */
+    aspect-ratio: 1/1;
 }
 
 .qr-placeholder:hover {
     border-color: #4ade80;
     background: #4a4a4a;
+}
+
+.qr-placeholder img {
+    background-color: #444;
 }
 
 .qr-placeholder i {
@@ -1253,6 +1259,8 @@ input:focus {
     width: 100%;
     height: 200px;
     overflow: hidden;
+    /* 添加aspect-ratio支持 */
+    aspect-ratio: 16/9;
 }
 
 .video-thumbnail img {
@@ -1260,10 +1268,30 @@ input:focus {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    /* 添加图片加载优化 */
+    background-color: #444;
 }
 
 .video-card:hover .video-thumbnail img {
     transform: scale(1.05);
+}
+
+/* 为懒加载添加loading状态 */
+img[loading="lazy"] {
+    background-color: #444;
+    background-image: linear-gradient(90deg, #444 25%, #555 50%, #444 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+img[loading="lazy"].loaded {
+    animation: none;
+    background: none;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 .play-button {

@@ -305,3 +305,46 @@ Interested in the code? Check out our GitHub repository!
 Built with love for neuroscience enthusiasts everywhere.
 
 `);
+
+// 图片懒加载优化
+document.addEventListener('DOMContentLoaded', function() {
+    // 为所有懒加载图片添加加载完成状态
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    
+    lazyImages.forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', function() {
+                this.classList.add('loaded');
+            });
+        }
+    });
+
+    // 检查浏览器是否支持WebP格式
+    function supportsWebp() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1;
+        canvas.height = 1;
+        return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+    }
+
+    // 如果支持WebP，可以动态替换图片格式（需要服务器端支持）
+    if (supportsWebp()) {
+        document.documentElement.classList.add('webp');
+    }
+
+    // 预加载关键图片（首屏可见的图片）
+    const criticalImages = [
+        'img/learning_resources/video1.png',
+        'img/learning_resources/video2.png'
+    ];
+
+    criticalImages.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        document.head.appendChild(link);
+    });
+});
