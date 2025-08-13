@@ -418,18 +418,24 @@
             <!-- Comments Section -->
             <div class="comments-section">
                 <h3>你们想要什么功能？请留言：</h3>
-                <div class="comment-form">
-                    <textarea id="commentText" placeholder="请在这里留下您的想法和建议..." rows="4"></textarea>
-                    <div class="form-row">
-                        <input type="text" id="userName" placeholder="您的昵称（可选）">
-                        <button type="button" id="submitComment" class="btn btn-primary">提交留言</button>
-                    </div>
-                </div>
                 
-                <div class="comments-list" id="commentsList">
-                    <h4>留言列表：</h4>
-                    <div class="no-comments">暂无留言，快来抢沙发吧！</div>
-                </div>
+                <!-- Giscus Comments -->
+                <script src="https://giscus.app/client.js"
+                       data-repo="bittergreen/NeuroAmateurs"
+                       data-repo-id="R_kgDOPdPvLQ"
+                       data-category="General"
+                       data-category-id="DIC_kwDOPdPvLc4CuInF"
+                       data-mapping="pathname"
+                       data-strict="0"
+                       data-reactions-enabled="1"
+                       data-emit-metadata="0"
+                       data-input-position="top"
+                       data-theme="preferred_color_scheme"
+                       data-lang="zh-CN"
+                       data-loading="lazy"
+                       crossorigin="anonymous"
+                       async>
+                </script>
             </div>
         </div>
     </section>
@@ -526,13 +532,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-<!-- Preload above-the-fold images -->
-<link rel="preload" as="image" href="img/learning_resources/video1.webp">
-<link rel="preload" as="image" href="img/learning_resources/video2.webp">
-<img src="img/learning_resources/video1.webp" 
-     srcset="img/learning_resources/video1-small.webp 300w, 
-             img/learning_resources/video1.webp 600w"
-     sizes="(max-width: 768px) 300px, 600px"
-     alt="Video 1 Thumbnail" 
-     loading="lazy">
-<img src="img/learning_resources/video2.webp" alt="Video 2 Thumbnail" loading="lazy">
