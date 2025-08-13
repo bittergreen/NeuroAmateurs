@@ -106,6 +106,7 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     color: white;
     padding: 0 20px;
@@ -120,13 +121,23 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></svg>') repeat;
-    animation: float 20s infinite linear;
+    background: linear-gradient(45deg, transparent 48%, rgba(102, 126, 234, 0.03) 50%, transparent 52%);
+    animation: shimmer 30s infinite linear;
 }
 
-@keyframes float {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(-100px); }
+@keyframes shimmer {
+    0% { transform: translateX(-100px) translateY(0px); }
+    100% { transform: translateX(100px) translateY(-50px); }
+}
+
+/* 添加一个hero容器来限制最大宽度 */
+.hero-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .hero-content {
@@ -201,6 +212,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+    max-width: 600px;
 }
 
 .brain-animation {
@@ -212,8 +224,8 @@ body {
 /* Pixel Fire Animation */
 .pixel-fire {
     position: absolute;
-    right: 50px;
-    bottom: 50px;
+    right: 10px;
+    bottom: 10px;
     width: 200px;
     height: 300px;
     z-index: 1;
@@ -328,18 +340,41 @@ body {
 
 .fire-pixel:nth-child(81) { left: 96px; bottom: 80px; background: #ffff00; animation-delay: 1.2s; }
 
+/* 添加更多火焰顶端像素，让火焰更对称更好看 */
+.fire-pixel:nth-child(82) { left: 92px; bottom: 88px; background: #ffff88; animation-delay: 1.3s; }
+.fire-pixel:nth-child(83) { left: 96px; bottom: 88px; background: #ffffff; animation-delay: 1.25s; }
+.fire-pixel:nth-child(84) { left: 100px; bottom: 88px; background: #ffff88; animation-delay: 1.35s; }
+
+.fire-pixel:nth-child(85) { left: 94px; bottom: 96px; background: #ffffcc; animation-delay: 1.4s; }
+.fire-pixel:nth-child(86) { left: 96px; bottom: 96px; background: #ffffff; animation-delay: 1.38s; }
+.fire-pixel:nth-child(87) { left: 98px; bottom: 96px; background: #ffffcc; animation-delay: 1.42s; }
+
+.fire-pixel:nth-child(88) { left: 95px; bottom: 104px; background: #ffffee; animation-delay: 1.5s; }
+.fire-pixel:nth-child(89) { left: 96px; bottom: 104px; background: #ffffff; animation-delay: 1.48s; }
+.fire-pixel:nth-child(90) { left: 97px; bottom: 104px; background: #ffffee; animation-delay: 1.52s; }
+
+.fire-pixel:nth-child(91) { left: 96px; bottom: 112px; background: #ffffff; animation-delay: 1.6s; }
+
 @keyframes flicker {
     0% { 
-        opacity: 0.8;
-        transform: translateY(0px) scale(1);
+        opacity: 0.7;
+        transform: translateY(0px) scale(1) rotate(0deg);
+    }
+    25% {
+        opacity: 1;
+        transform: translateY(-1px) scale(1.05) rotate(1deg);
     }
     50% {
+        opacity: 0.9;
+        transform: translateY(-2px) scale(1.1) rotate(-1deg);
+    }
+    75% {
         opacity: 1;
-        transform: translateY(-2px) scale(1.1);
+        transform: translateY(-1px) scale(1.05) rotate(0.5deg);
     }
     100% { 
-        opacity: 0.9;
-        transform: translateY(-4px) scale(0.9);
+        opacity: 0.8;
+        transform: translateY(-3px) scale(0.95) rotate(0deg);
     }
 }
 
@@ -1061,9 +1096,50 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-visual {
+        max-width: 100%;
+    }
+    
+    .brain-animation {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .pixel-fire {
+        right: 20px;
+        bottom: 20px;
+        width: 150px;
+        height: 200px;
+    }
+}
+
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 2rem;
+    }
+    
+    .brain-animation {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .pixel-fire {
+        display: none; /* 在很小的屏幕上隐藏火焰以节省空间 */
     }
     
     .container {

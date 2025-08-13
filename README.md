@@ -142,3 +142,33 @@ This project is open source and available under the MIT License.
 ---
 
 **Built with ❤️ for neuroscience enthusiasts everywhere!**
+
+## ☁️ Deploy (Cloudflare Pages + Functions)
+
+The project includes Cloudflare Pages Functions under the "functions/" directory, exposing these example endpoints:
+- GET /api/health
+- GET /api/hello
+- POST /api/echo
+
+Prerequisites:
+- A Cloudflare account
+
+1) Login
+```bash
+npx wrangler login
+```
+
+2) Local dev (serve static assets + functions together)
+```bash
+npx wrangler pages dev .
+```
+
+3) Deploy to Cloudflare Pages
+```bash
+npx wrangler pages deploy .
+```
+
+After deployment, visit:
+- https://your-site.pages.dev/api/health
+- https://your-site.pages.dev/api/hello
+- Use the "API Playground" section in the Community page to POST to /api/echo
