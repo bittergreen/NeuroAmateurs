@@ -89,13 +89,18 @@ document.querySelectorAll('.topic-card, .resource-card, .feature').forEach(el =>
     observer.observe(el);
 });
 
+let statsAnimated = false;
+
 // Stats counter animation
 const animateStats = () => {
+    if (statsAnimated) return;
+    statsAnimated = true;
     const stats = document.querySelectorAll('.stat-number');
     
     stats.forEach(stat => {
-        const target = parseInt(stat.textContent.replace(/[^0-9]/g, ''));
-        const suffix = stat.textContent.replace(/[0-9]/g, '');
+        const targetValue = stat.dataset.target ?? stat.textContent.replace(/[^0-9]/g, '');
+        const target = parseInt(targetValue || '0', 10);
+        const suffix = stat.dataset.suffix ?? stat.textContent.replace(/[0-9]/g, '');
         let current = 0;
         const increment = target / 100;
         const timer = setInterval(() => {
@@ -103,6 +108,7 @@ const animateStats = () => {
             if (current >= target) {
                 current = target;
                 clearInterval(timer);
+                stat.dataset.animated = 'true';
             }
             stat.textContent = Math.floor(current) + suffix;
         }, 20);
@@ -111,6 +117,12 @@ const animateStats = () => {
 
 // Trigger stats animation when about section is visible
 const aboutSection = document.querySelector('.about');
+document.querySelectorAll('.stat-number').forEach(stat => {
+    const targetValue = stat.textContent.replace(/[^0-9]/g, '');
+    const suffix = stat.textContent.replace(/[0-9]/g, '');
+    stat.dataset.target = targetValue;
+    stat.dataset.suffix = suffix;
+});
 if (aboutSection) {
     const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -347,4 +359,27 @@ document.addEventListener('DOMContentLoaded', function() {
         link.href = src;
         document.head.appendChild(link);
     });
+
+    const blogCount = document.getElementById('blog-count');
+    if (blogCount) {
+        fetch('articles/index.txt')
+            .then(response => response.text())
+            .then(text => {
+                const count = text
+                    .split('\n')
+                    .map(line => line.trim())
+                    .filter(Boolean).length;
+                blogCount.textContent = String(count);
+                blogCount.dataset.target = String(count);
+                blogCount.dataset.suffix = '';
+                if (aboutSection) {
+                    const rect = aboutSection.getBoundingClientRect();
+                    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+                    if (inView) {
+                        animateStats();
+                    }
+                }
+            })
+            .catch(() => {});
+    }
 });
