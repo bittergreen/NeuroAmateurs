@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroAmateurs Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-brain"></i>
+                <span>NeuroAmateurs</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="#blog" class="nav-link active">Blog</a></li>
+                <li><a href="#blog-directory" class="nav-link">目录</a></li>
+                <li><a href="#blog-posts" class="nav-link">文章</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="blog-hero" id="blog">
+        <div class="container">
+            <div class="blog-hero-content">
+                <p class="blog-hero-label">NeuroAmateurs Blog</p>
+                <h1>神经科学系列博客</h1>
+                <p class="blog-hero-subtitle">欢迎大家踊跃投稿</p>
+                <div class="blog-hero-meta">
+                    <span><i class="fas fa-layer-group"></i> 多级目录</span>
+                    <span><i class="fas fa-book-open"></i> 原创文章</span>
+                    <span><i class="fas fa-magnifying-glass"></i> 搜索与筛选</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="blog">
+        <div class="container">
+            <div class="blog-header">
+                <div>
+                    <h2>文章库</h2>
+                    <p class="section-subtitle">我先持续更新一些自己感兴趣的话题吧，包括记忆，Reward-seeking Brain和3 Systems。
+                        咱们以后直接把Obsidian搬运过来了，哈哈哈，Obsidian直接吐到博客里！
+                    </p>
+                </div>
+                <div class="blog-actions">
+                    <div class="blog-search">
+                        <i class="fas fa-search"></i>
+                        <input type="search" id="blog-search" placeholder="搜索标题或摘要">
+                    </div>
+                    <button class="btn btn-primary" id="blog-reset">全部文章</button>
+                </div>
+            </div>
+
+            <div class="blog-layout">
+                <aside class="blog-sidebar" id="blog-directory">
+                    <div class="blog-panel">
+                        <h3>目录</h3>
+                        <div id="blog-tree" class="blog-tree"></div>
+                    </div>
+                    <div class="blog-panel">
+                        <h3>热门标签</h3>
+                        <div id="blog-tags" class="tag-list"></div>
+                    </div>
+                </aside>
+
+                <main class="blog-main" id="blog-posts">
+                    <div class="blog-list">
+                        <h3>文章列表</h3>
+                        <div id="post-list" class="post-list"></div>
+                    </div>
+                </main>
+
+                <aside class="blog-aside">
+                    <div class="blog-panel">
+                        <h3>最近更新</h3>
+                        <div id="latest-posts" class="latest-posts"></div>
+                    </div>
+                    <div class="blog-panel">
+                        <h3>阅读提示</h3>
+                        <ul class="reading-tips">
+                            <li>点击左侧目录可筛选多级分类</li>
+                            <li>点击文章进入独立页面阅读</li>
+                            <li>搜索支持标题与摘要匹配</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-logo">
+                        <i class="fas fa-brain"></i>
+                        <span>NeuroAmateurs</span>
+                    </div>
+                    <p>Making neuroscience accessible to everyone.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Learn</h4>
+                        <ul>
+                            <li><a href="index.html#topics">Brain Anatomy</a></li>
+                            <li><a href="index.html#topics">Neural Networks</a></li>
+                            <li><a href="index.html#topics">Memory & Learning</a></li>
+                            <li><a href="index.html#topics">Emotions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="index.html#resources">Articles</a></li>
+                            <li><a href="index.html#resources">Videos</a></li>
+                            <li><a href="index.html#community">Interactive Tools</a></li>
+                            <li><a href="index.html#about">Glossary</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Community</h4>
+                        <ul>
+                            <li><a href="index.html#community">Forums</a></li>
+                            <li><a href="index.html#community">Events</a></li>
+                            <li><a href="index.html#community">Study Groups</a></li>
+                            <li><a href="index.html#community">Newsletter</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h4>Connect with Us</h4>
+                    <div class="footer-qr">
+                        <img src="img/contact_me.png" alt="小红书头像" loading="lazy" width="280" height="100">
+                        <div class="qr-info">
+                            <p class="qr-title">我的小红书</p>
+                            <p class="qr-subtitle">@E涤狗</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>bittergreen.wengqi@hotmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pinealand. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const searchInput = document.getElementById('blog-search');
+            const resetButton = document.getElementById('blog-reset');
+            const treeContainer = document.getElementById('blog-tree');
+            const tagContainer = document.getElementById('blog-tags');
+            const postList = document.getElementById('post-list');
+            const latestPosts = document.getElementById('latest-posts');
+            const indexText = await fetch('articles/index.txt').then((res) => res.text()).catch(() => '');
+            const files = indexText
+                .split('\n')
+                .map((line) => line.trim())
+                .filter(Boolean);
+
+            const normalizeTags = (value) => {
+                if (!value) return [];
+                const cleaned = value.replace(/^\[|\]$/g, '');
+                return cleaned.split(',').map((tag) => tag.trim()).filter(Boolean);
+            };
+
+            const parseFrontMatter = (raw) => {
+                if (!raw.startsWith('---')) {
+                    return { meta: {}, body: raw };
+                }
+                const endIndex = raw.indexOf('\n---');
+                if (endIndex === -1) {
+                    return { meta: {}, body: raw };
+                }
+                const frontMatter = raw.slice(3, endIndex).trim();
+                const body = raw.slice(endIndex + 4).replace(/^\s+/, '');
+                const meta = {};
+                frontMatter.split('\n').forEach((line) => {
+                    const separatorIndex = line.indexOf(':');
+                    if (separatorIndex === -1) return;
+                    const key = line.slice(0, separatorIndex).trim();
+                    const value = line.slice(separatorIndex + 1).trim();
+                    if (key === 'tags') {
+                        meta.tags = normalizeTags(value);
+                    } else {
+                        meta[key] = value;
+                    }
+                });
+                return { meta, body };
+            };
+
+            const extractSummary = (body) => {
+                const lines = body.split('\n').map((line) => line.trim());
+                const paragraph = lines.find((line) => line && !line.startsWith('#') && !line.startsWith('-') && !line.startsWith('*') && !/^\d+\./.test(line) && !line.startsWith('```'));
+                return paragraph || '';
+            };
+
+            const buildCategoryTree = (posts) => {
+                const root = [];
+                const findOrCreate = (nodes, name) => {
+                    let node = nodes.find((item) => item.name === name);
+                    if (!node) {
+                        node = { name, children: [] };
+                        nodes.push(node);
+                    }
+                    return node;
+                };
+                posts.forEach((post) => {
+                    let current = root;
+                    post.categoryPath.forEach((segment) => {
+                        const node = findOrCreate(current, segment);
+                        current = node.children;
+                    });
+                });
+                return root;
+            };
+
+            const loadArticleMeta = async (file) => {
+                const raw = await fetch(`articles/${file}`).then((res) => res.text()).catch(() => '');
+                const { meta, body } = parseFrontMatter(raw);
+                const slug = file.replace(/\.(md|txt)$/i, '');
+                const summary = meta.summary || extractSummary(body);
+                const categoryPath = meta.category ? meta.category.split('/').map((part) => part.trim()).filter(Boolean) : [];
+                return {
+                    slug,
+                    title: meta.title || slug,
+                    date: meta.date || '',
+                    readingTime: meta.readingTime || '',
+                    author: meta.author || '',
+                    categoryPath,
+                    tags: meta.tags || [],
+                    summary,
+                    file
+                };
+            };
+
+            const posts = await Promise.all(files.map((file) => loadArticleMeta(file)));
+            const blogData = {
+                posts,
+                categories: buildCategoryTree(posts)
+            };
+
+            const state = {
+                categoryPath: null,
+                tag: null,
+                query: ''
+            };
+
+            const categoryKey = (path) => path.join(' / ');
+
+            const matchesCategory = (post, path) => {
+                if (!path) return true;
+                if (path.length > post.categoryPath.length) return false;
+                return path.every((segment, index) => segment === post.categoryPath[index]);
+            };
+
+            const getCategoryCount = (path) => blogData.posts.filter((post) => matchesCategory(post, path)).length;
+
+            const updateActiveCategory = (path) => {
+                document.querySelectorAll('.tree-label').forEach((node) => {
+                    node.classList.toggle('active', node.dataset.path === categoryKey(path));
+                });
+            };
+
+            const renderTree = (nodes, container, parentPath = []) => {
+                nodes.forEach((node) => {
+                    const currentPath = [...parentPath, node.name];
+                    const item = document.createElement('div');
+                    item.className = 'tree-node';
+
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'tree-label';
+                    button.dataset.path = categoryKey(currentPath);
+                    const hasChildren = Array.isArray(node.children) && node.children.length > 0;
+                    button.innerHTML = `
+                        <span class="tree-icon"><i class="fas ${hasChildren ? 'fa-folder' : 'fa-file-alt'}"></i></span>
+                        <span class="tree-text">${node.name}</span>
+                        <span class="tree-count">${getCategoryCount(currentPath)}</span>
+                        ${hasChildren ? '<span class="tree-chevron"><i class="fas fa-chevron-down"></i></span>' : ''}
+                    `;
+
+                    button.addEventListener('click', () => {
+                        state.categoryPath = currentPath;
+                        state.tag = null;
+                        state.query = searchInput.value.trim().toLowerCase();
+                        updateActiveCategory(currentPath);
+                        renderPosts();
+                        if (hasChildren) {
+                            item.classList.toggle('collapsed');
+                        }
+                    });
+
+                    item.appendChild(button);
+
+                    if (hasChildren) {
+                        const childContainer = document.createElement('div');
+                        childContainer.className = 'tree-children';
+                        renderTree(node.children, childContainer, currentPath);
+                        item.appendChild(childContainer);
+                    }
+
+                    container.appendChild(item);
+                });
+            };
+
+            const renderTags = () => {
+                const tags = Array.from(new Set(blogData.posts.flatMap((post) => post.tags)));
+                tagContainer.innerHTML = '';
+                if (tags.length === 0) {
+                    tagContainer.innerHTML = '<div class="empty-state">暂无标签</div>';
+                    return;
+                }
+                tags.forEach((tag) => {
+                    const tagButton = document.createElement('button');
+                    tagButton.type = 'button';
+                    tagButton.className = 'tag';
+                    tagButton.textContent = tag;
+                    tagButton.addEventListener('click', () => {
+                        state.tag = tag;
+                        state.categoryPath = null;
+                        updateActiveCategory([]);
+                        renderPosts();
+                    });
+                    tagContainer.appendChild(tagButton);
+                });
+            };
+
+            const getFilteredPosts = () => {
+                return blogData.posts.filter((post) => {
+                    const queryMatch = state.query
+                        ? post.title.toLowerCase().includes(state.query) || post.summary.toLowerCase().includes(state.query)
+                        : true;
+                    const categoryMatch = matchesCategory(post, state.categoryPath);
+                    const tagMatch = state.tag ? post.tags.includes(state.tag) : true;
+                    return queryMatch && categoryMatch && tagMatch;
+                });
+            };
+
+            const renderPostList = (posts) => {
+                postList.innerHTML = '';
+                if (posts.length === 0) {
+                    postList.innerHTML = '<div class="empty-state">没有匹配的文章</div>';
+                    return;
+                }
+
+                posts.forEach((post) => {
+                    const card = document.createElement('div');
+                    card.className = 'post-card';
+                    card.innerHTML = `
+                        <div class="post-card-header">
+                            <h4>${post.title}</h4>
+                            <span>${post.date}</span>
+                        </div>
+                        <p>${post.summary}</p>
+                        <div class="post-card-meta">
+                            <span>${post.readingTime}</span>
+                            <span>${post.author}</span>
+                            <span>${categoryKey(post.categoryPath)}</span>
+                            <a class="post-card-link" href="article.html?slug=${post.slug}">阅读全文</a>
+                        </div>
+                    `;
+                    card.addEventListener('click', () => {
+                        window.location.href = `article.html?slug=${post.slug}`;
+                    });
+                    postList.appendChild(card);
+                });
+            };
+
+            const renderLatest = () => {
+                const sorted = [...blogData.posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+                if (sorted.length === 0) {
+                    latestPosts.innerHTML = '<div class="empty-state">暂无文章</div>';
+                    return;
+                }
+                latestPosts.innerHTML = sorted.slice(0, 4).map((post) => `
+                    <a class="latest-post" href="article.html?slug=${post.slug}">
+                        <span class="latest-post-title">${post.title}</span>
+                        <span class="latest-post-date">${post.date}</span>
+                    </a>
+                `).join('');
+            };
+
+            const renderPosts = () => {
+                const filtered = getFilteredPosts();
+                renderPostList(filtered);
+            };
+
+            const resetFilters = () => {
+                state.categoryPath = null;
+                state.tag = null;
+                state.query = '';
+                searchInput.value = '';
+                updateActiveCategory([]);
+                renderPosts();
+            };
+
+            searchInput.addEventListener('input', (event) => {
+                state.query = event.target.value.trim().toLowerCase();
+                renderPosts();
+            });
+
+            resetButton.addEventListener('click', resetFilters);
+
+            renderTree(blogData.categories, treeContainer);
+            renderTags();
+            renderPosts();
+            renderLatest();
+        });
+    </script>
+</body>
+</html>

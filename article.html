@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroAmateurs Article</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-brain"></i>
+                <span>NeuroAmateurs</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="blog-hero article-hero">
+        <div class="container">
+            <div class="blog-hero-content">
+                <p class="blog-hero-label">NeuroAmateurs Blog</p>
+                <h1 id="article-hero-title">文章加载中</h1>
+                <p class="blog-hero-subtitle" id="article-hero-summary"></p>
+                <div class="blog-hero-meta">
+                    <span id="article-hero-author"></span>
+                    <span id="article-hero-date"></span>
+                    <span id="article-hero-reading"></span>
+                </div>
+                <div class="article-hero-actions">
+                    <a class="btn btn-secondary" href="blog.html">返回文章列表</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="blog">
+        <div class="container">
+            <div class="article-layout">
+                <article class="blog-article">
+                    <div class="article-header">
+                        <div class="article-breadcrumbs" id="article-breadcrumbs"></div>
+                        <h2 id="article-title"></h2>
+                        <div class="article-meta" id="article-meta"></div>
+                        <div class="article-tags" id="article-tags"></div>
+                    </div>
+                    <div class="article-content" id="article-content"></div>
+                </article>
+                <aside class="blog-aside">
+                    <div class="blog-panel">
+                        <h3>目录大纲</h3>
+                        <nav id="article-toc" class="article-toc"></nav>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-logo">
+                        <i class="fas fa-brain"></i>
+                        <span>NeuroAmateurs</span>
+                    </div>
+                    <p>Making neuroscience accessible to everyone.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Learn</h4>
+                        <ul>
+                            <li><a href="index.html#topics">Brain Anatomy</a></li>
+                            <li><a href="index.html#topics">Neural Networks</a></li>
+                            <li><a href="index.html#topics">Memory & Learning</a></li>
+                            <li><a href="index.html#topics">Emotions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="index.html#resources">Articles</a></li>
+                            <li><a href="index.html#resources">Videos</a></li>
+                            <li><a href="index.html#community">Interactive Tools</a></li>
+                            <li><a href="index.html#about">Glossary</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Community</h4>
+                        <ul>
+                            <li><a href="index.html#community">Forums</a></li>
+                            <li><a href="index.html#community">Events</a></li>
+                            <li><a href="index.html#community">Study Groups</a></li>
+                            <li><a href="index.html#community">Newsletter</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h4>Connect with Us</h4>
+                    <div class="footer-qr">
+                        <img src="img/contact_me.png" alt="小红书头像" loading="lazy" width="280" height="100">
+                        <div class="qr-info">
+                            <p class="qr-title">我的小红书</p>
+                            <p class="qr-subtitle">@E涤狗</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>bittergreen.wengqi@hotmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pinealand. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const slugParam = params.get('slug');
+            const heroTitle = document.getElementById('article-hero-title');
+            const heroSummary = document.getElementById('article-hero-summary');
+            const heroAuthor = document.getElementById('article-hero-author');
+            const heroDate = document.getElementById('article-hero-date');
+            const heroReading = document.getElementById('article-hero-reading');
+            const articleTitle = document.getElementById('article-title');
+            const articleMeta = document.getElementById('article-meta');
+            const articleTags = document.getElementById('article-tags');
+            const articleContent = document.getElementById('article-content');
+            const articleBreadcrumbs = document.getElementById('article-breadcrumbs');
+            const articleToc = document.getElementById('article-toc');
+
+            const indexText = await fetch('articles/index.txt').then((res) => res.text()).catch(() => '');
+            const files = indexText
+                .split('\n')
+                .map((line) => line.trim())
+                .filter(Boolean);
+            const targetFile = files.find((file) => file.replace(/\.(md|txt)$/i, '') === slugParam) || files[0];
+
+            const normalizeTags = (value) => {
+                if (!value) return [];
+                const cleaned = value.replace(/^\[|\]$/g, '');
+                return cleaned.split(',').map((tag) => tag.trim()).filter(Boolean);
+            };
+
+            const parseFrontMatter = (raw) => {
+                if (!raw.startsWith('---')) {
+                    return { meta: {}, body: raw };
+                }
+                const endIndex = raw.indexOf('\n---');
+                if (endIndex === -1) {
+                    return { meta: {}, body: raw };
+                }
+                const frontMatter = raw.slice(3, endIndex).trim();
+                const body = raw.slice(endIndex + 4).replace(/^\s+/, '');
+                const meta = {};
+                frontMatter.split('\n').forEach((line) => {
+                    const separatorIndex = line.indexOf(':');
+                    if (separatorIndex === -1) return;
+                    const key = line.slice(0, separatorIndex).trim();
+                    const value = line.slice(separatorIndex + 1).trim();
+                    if (key === 'tags') {
+                        meta.tags = normalizeTags(value);
+                    } else {
+                        meta[key] = value;
+                    }
+                });
+                return { meta, body };
+            };
+
+            const escapeHtml = (text) => text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+
+            const applyEmphasis = (input) => {
+                let output = input;
+                output = output.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+                output = output.replace(/__([^_]+)__/g, '<strong>$1</strong>');
+                output = output.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+                output = output.replace(/_([^_]+)_/g, '<em>$1</em>');
+                return output;
+            };
+
+            const renderInline = (text) => {
+                let result = escapeHtml(text);
+                const codeTokens = [];
+                result = result.replace(/`([^`]+)`/g, (match, code) => {
+                    const token = `@@CODE${codeTokens.length}@@`;
+                    codeTokens.push(`<code>${code}</code>`);
+                    return token;
+                });
+
+                const linkTokens = [];
+                result = result.replace(/\[\[([^\]]+)\]\]\(([^)]+)\)/g, (match, label, url) => {
+                    const token = `@@LINK${linkTokens.length}@@`;
+                    const safeUrl = url.replace(/"/g, '&quot;');
+                    const labelHtml = applyEmphasis(label);
+                    linkTokens.push(`<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">[${labelHtml}]</a>`);
+                    return token;
+                });
+
+                result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, label, url) => {
+                    const token = `@@LINK${linkTokens.length}@@`;
+                    const safeUrl = url.replace(/"/g, '&quot;');
+                    const labelHtml = applyEmphasis(label);
+                    linkTokens.push(`<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${labelHtml}</a>`);
+                    return token;
+                });
+
+                result = applyEmphasis(result);
+
+                codeTokens.forEach((html, index) => {
+                    result = result.replace(`@@CODE${index}@@`, html);
+                });
+                linkTokens.forEach((html, index) => {
+                    result = result.replace(`@@LINK${index}@@`, html);
+                });
+                return result;
+            };
+
+            const buildHeadingId = (text, counts) => {
+                const base = text
+                    .toLowerCase()
+                    .replace(/[^\w\u4e00-\u9fa5]+/g, '-')
+                    .replace(/^-+|-+$/g, '') || 'section';
+                const count = (counts[base] || 0) + 1;
+                counts[base] = count;
+                return count === 1 ? base : `${base}-${count}`;
+            };
+
+            const renderMarkdown = (markdown) => {
+                const lines = markdown.replace(/\r\n/g, '\n').split('\n');
+                let html = '';
+                let paragraph = [];
+                let listType = null;
+                let listItems = [];
+                let inCode = false;
+                let codeLines = [];
+                let inBlockquote = false;
+                let blockquoteLines = [];
+                const headingCounts = {};
+
+                const flushParagraph = () => {
+                    if (paragraph.length) {
+                        html += `<p>${renderInline(paragraph.join(' ').trim())}</p>`;
+                        paragraph = [];
+                    }
+                };
+
+                const flushList = () => {
+                    if (listType && listItems.length) {
+                        html += `<${listType}>${listItems.map((item) => `<li>${item}</li>`).join('')}</${listType}>`;
+                    }
+                    listType = null;
+                    listItems = [];
+                };
+
+                const flushBlockquote = () => {
+                    if (!blockquoteLines.length) return;
+                    const paragraphs = [];
+                    let current = [];
+                    blockquoteLines.forEach((line) => {
+                        if (!line.trim()) {
+                            if (current.length) {
+                                paragraphs.push(current.join(' ').trim());
+                                current = [];
+                            }
+                        } else {
+                            current.push(line.trim());
+                        }
+                    });
+                    if (current.length) {
+                        paragraphs.push(current.join(' ').trim());
+                    }
+                    html += `<blockquote>${paragraphs.map((text) => `<p>${renderInline(text)}</p>`).join('')}</blockquote>`;
+                    blockquoteLines = [];
+                    inBlockquote = false;
+                };
+
+                lines.forEach((line) => {
+                    const trimmed = line.trim();
+                    if (trimmed.startsWith('```')) {
+                        if (inCode) {
+                            html += `<pre><code>${escapeHtml(codeLines.join('\n'))}</code></pre>`;
+                            codeLines = [];
+                            inCode = false;
+                        } else {
+                            flushParagraph();
+                            flushList();
+                            flushBlockquote();
+                            inCode = true;
+                        }
+                        return;
+                    }
+                    if (inCode) {
+                        codeLines.push(line);
+                        return;
+                    }
+                    if (trimmed.startsWith('>')) {
+                        flushParagraph();
+                        flushList();
+                        inBlockquote = true;
+                        blockquoteLines.push(trimmed.replace(/^>\s?/, ''));
+                        return;
+                    }
+                    if (inBlockquote && trimmed === '') {
+                        blockquoteLines.push('');
+                        return;
+                    }
+                    if (inBlockquote) {
+                        flushBlockquote();
+                    }
+                    if (!trimmed) {
+                        flushParagraph();
+                        flushList();
+                        flushBlockquote();
+                        return;
+                    }
+                    if (/^(-{3,}|\*{3,}|_{3,})$/.test(trimmed)) {
+                        flushParagraph();
+                        flushList();
+                        flushBlockquote();
+                        html += '<hr>';
+                        return;
+                    }
+                    const headingMatch = trimmed.match(/^(#{1,6})\s+(.*)$/);
+                    if (headingMatch) {
+                        flushParagraph();
+                        flushList();
+                        flushBlockquote();
+                        const level = headingMatch[1].length;
+                        const text = headingMatch[2].trim();
+                        const id = buildHeadingId(text, headingCounts);
+                        html += `<h${level} id="${id}">${renderInline(text)}</h${level}>`;
+                        return;
+                    }
+                    const unorderedMatch = trimmed.match(/^[-*]\s+(.*)$/);
+                    const orderedMatch = trimmed.match(/^\d+\.\s+(.*)$/);
+                    if (unorderedMatch || orderedMatch) {
+                        flushParagraph();
+                        flushBlockquote();
+                        const currentType = unorderedMatch ? 'ul' : 'ol';
+                        if (listType && listType !== currentType) {
+                            flushList();
+                        }
+                        listType = currentType;
+                        listItems.push(renderInline((unorderedMatch || orderedMatch)[1]));
+                        return;
+                    }
+                    paragraph.push(trimmed);
+                });
+
+                if (inCode) {
+                    html += `<pre><code>${escapeHtml(codeLines.join('\n'))}</code></pre>`;
+                }
+                flushParagraph();
+                flushList();
+                flushBlockquote();
+                return html;
+            };
+
+            if (!targetFile) {
+                heroTitle.textContent = '没有找到文章';
+                articleContent.innerHTML = '<div class="empty-state">请先在 articles/index.txt 中添加文章文件</div>';
+                return;
+            }
+
+            const raw = await fetch(`articles/${targetFile}`).then((res) => res.text()).catch(() => '');
+            const { meta, body } = parseFrontMatter(raw);
+            const title = meta.title || targetFile.replace(/\.(md|txt)$/i, '');
+            const summary = meta.summary || '';
+            const categoryPath = meta.category ? meta.category.split('/').map((part) => part.trim()).filter(Boolean) : [];
+            const tags = meta.tags || [];
+
+            heroTitle.textContent = title;
+            heroSummary.textContent = summary;
+            heroAuthor.textContent = meta.author ? `作者：${meta.author}` : '';
+            heroDate.textContent = meta.date ? `日期：${meta.date}` : '';
+            heroReading.textContent = meta.readingTime ? `阅读：${meta.readingTime}` : '';
+
+            articleTitle.textContent = title;
+            articleMeta.innerHTML = `
+                ${meta.date ? `<span><i class="fas fa-calendar"></i> ${meta.date}</span>` : ''}
+                ${meta.readingTime ? `<span><i class="fas fa-clock"></i> ${meta.readingTime}</span>` : ''}
+                ${meta.author ? `<span><i class="fas fa-user"></i> ${meta.author}</span>` : ''}
+            `;
+            articleTags.innerHTML = tags.map((tag) => `<span class="tag">${tag}</span>`).join('');
+            articleBreadcrumbs.textContent = categoryPath.join(' / ');
+            articleContent.innerHTML = renderMarkdown(body);
+
+            document.title = `${title} - NeuroAmateurs`;
+
+            const headings = articleContent.querySelectorAll('h2, h3, h4');
+            if (headings.length === 0) {
+                articleToc.innerHTML = '<div class="empty-state">暂无目录</div>';
+            } else {
+                articleToc.innerHTML = '';
+                headings.forEach((heading) => {
+                    const link = document.createElement('a');
+                    link.href = `#${heading.id}`;
+                    link.className = `toc-link toc-level-${heading.tagName.slice(1)}`;
+                    link.textContent = heading.textContent;
+                    articleToc.appendChild(link);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
